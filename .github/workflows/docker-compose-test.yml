@@ -23,7 +23,7 @@ jobs:
     #  run: docker ps
     
     - name: see if we have make
-      run: make build
+      run: pwd; ls ; make build
 
     - name: make test
       run: make test
