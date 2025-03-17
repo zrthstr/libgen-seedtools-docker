@@ -1,5 +1,5 @@
 DC = COMPOSE_DOCKER_CLI_BUILD=1 docker compose
-DC_RUN_NO_DEPS = $(DC_RUN) run --no-deps --rm --remove-orphans
+DC_RUN_NO_DEPS = $(DC) run --no-deps --rm --remove-orphans
 
 .PHONY: test test-libgenseedtools test-transmission shell-libgenseedtools shell-transmission up down log generate-config fetch edit-config-libgen-seedools edit-config-transmission build reread-config-tranmission
 
