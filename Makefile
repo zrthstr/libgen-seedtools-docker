@@ -18,6 +18,9 @@ shell-transmission:
 	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools
 
 up:
+	$(DC) up -d
+
+up-foreground:
 	$(DC) up
 
 down:
