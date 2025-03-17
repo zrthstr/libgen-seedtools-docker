@@ -1,5 +1,5 @@
 services:
-  seedtools:
+  dibgen-seedtools:
     build:
       context: ./libgen-seedtools
     #environment:
