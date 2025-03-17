@@ -12,10 +12,10 @@ test-libgenseedtools:
 	$(DC_RUN_NO_DEPS) libgen-seedtools --version
 
 shell-libgenseedtools:
-	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools
+	$(DC_RUN_NO_DEPS) --entrypoint=sh libgen-seedtools
 
 shell-transmission:
-	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools
+	$(DC_RUN_NO_DEPS) --entrypoint=sh libgen-seedtools
 
 up:
 	$(DC) up -d
@@ -30,11 +30,11 @@ log:
 	echo logs
 
 generate-config:
-	$(DC_RUN_NO_DEPS) seedtools generate-config
+	$(DC_RUN_NO_DEPS) libgen-seedtools generate-config
 	echo now edit / patch for path
 
 fetch:
-	$(DC_RUN_NO_DEPS) seedtools fetch
+	$(DC_RUN_NO_DEPS) libgen-seedtools fetch
 
 edit-config-libgen-seedools:
 	echo e c l s
