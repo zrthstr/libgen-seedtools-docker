@@ -36,12 +36,12 @@ jobs:
         echo TBD
         # Add your testing commands here
         # For example:
-        # docker-compose exec -T service_name pytest
+        # docker compose exec -T service_name pytest
 
     - name: Check logs on failure
       if: ${{ failure() }}
-      run: docker-compose logs
+      run: docker compose logs
 
     - name: Tear down
       if: ${{ always() }}
-      run: docker-compose down -v
+      run: docker compose down -v
