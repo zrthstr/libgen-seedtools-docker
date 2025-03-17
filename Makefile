@@ -1,20 +1,27 @@
+# Docker Compose command variables
+DC = COMPOSE_DOCKER_CLI_BUILD=1 docker compose
+DC_RUN = $(DC) run --rm --remove-orphans
+DC_RUN_NO_DEPS = $(DC_RUN) --no-deps
+
+# Targets
+.PHONY: test test-libgenseedtools test-transmission shell-libgenseedtools shell-transmission up down log generate-config fetch edit-config-libgen-seedools edit-config-transmission build reread-config-tranmission
 
 test: test-libgenseedtools test-transmission
 
 test-transmission:
-	docker compose run --rm --remove-orphans --no-deps transmission transmission-daemon --version
+	$(DC_RUN_NO_DEPS) transmission transmission-daemon --version
 
 test-libgenseedtools:
-	docker compose run --rm --remove-orphans --no-deps seedtools --version
+	$(DC_RUN_NO_DEPS) seedtools --version
 
 shell-libgenseedtools:
-	docker compose run --rm --remove-orphans --entrypoint=sh --no-deps seedtools 
+	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools 
 
 shell-transmission:
-	docker compose run --rm --remove-orphans --entrypoint=sh --no-deps seedtools 
+	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools 
 
 up:
-	docker compose up
+	$(DC) up
 
 down:
 	echo down
@@ -23,22 +30,20 @@ log:
 	echo logs
 
 generate-config:
-	docker compose run --rm --remove-orphans --no-deps seedtools generate-config
+	$(DC_RUN_NO_DEPS) seedtools generate-config
 	echo now edit / patch for path
 
 fetch:
-	docker compose run --rm --remove-orphans --no-deps seedtools fetch
+	$(DC_RUN_NO_DEPS) seedtools fetch
 
 edit-config-libgen-seedools:
-	echo  e c l s
+	echo e c l s
 
 edit-config-transmission:
 	echo e c t
 
 build:
-	docker compose build --no-cache
+	$(DC) build --no-cache
 
 reread-config-tranmission:
 	echo kill -HUP 1234
-
-
