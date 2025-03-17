@@ -9,13 +9,13 @@ test-transmission:
 	$(DC_RUN_NO_DEPS) transmission transmission-daemon --version
 
 test-libgenseedtools:
-	$(DC_RUN_NO_DEPS) seedtools --version
+	$(DC_RUN_NO_DEPS) libgen-seedtools --version
 
 shell-libgenseedtools:
-	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools 
+	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools
 
 shell-transmission:
-	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools 
+	$(DC_RUN_NO_DEPS) --entrypoint=sh seedtools
 
 up:
 	$(DC) up
