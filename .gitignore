@@ -1,0 +1,5 @@
+data/libgen-seedtools/torrent_data.json
+data/transmission/bandwidth-groups.json
+data/transmission/resume/*
+data/transmission/torrents/*
+data/transmission/stats.json

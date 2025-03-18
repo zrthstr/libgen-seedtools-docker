@@ -2,12 +2,8 @@ services:
   libgen-seedtools:
     build:
       context: ./libgen-seedtools
-    #environment:
-    #  - TRANSMISSION_URL=http://transmission:9091/transmission/rpc
-    #  - TRANSMISSION_USER=${TRANSMISSION_USER:-admin}
-    #  - TRANSMISSION_PASSWORD=${TRANSMISSION_PASSWORD:-password}
     volumes:
-      - ./data:/data
+      - ./data/libgen-seedtools:/data
       - ./downloads:/downloads
     depends_on:
       - transmission
@@ -21,12 +17,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=${TZ:-Etc/UTC}
-      #- USER=${TRANSMISSION_USER:-admin}
-      #- PASS=${TRANSMISSION_PASSWORD:-password}
     volumes:
       - ./downloads:/downloads
-      - ./data:/data
+      - ./data/transmission:/data
     ports:
       - "127.0.0.1:9091:9091"
       - "51413:51413"
