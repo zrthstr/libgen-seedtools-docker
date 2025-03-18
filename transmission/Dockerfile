@@ -1,6 +1,6 @@
 FROM alpine:3.21
 
-RUN apk add --no-cache transmission-daemon
+RUN apk add --no-cache transmission-daemon transmission-remote
 
 RUN mkdir -p /downloads /data
 

@@ -1,46 +1,43 @@
 name: Docker Compose Test
-
 on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    #- name: Build and start services
-    #  run: docker-compose up -d --build
+    - name: Build containers
+      run: make system-build
 
-    #- name: Check running containers
-    #  run: docker ps
-    
-    - name: see if we have make
-      run: pwd; ls ; make build
-
-    - name: make test
+    - name: Run component tests
       run: make test
 
-    - name: make up
-      run: make up
+    - name: Start services
+      run: make system-up
 
-    - name: Run tests
+    - name: Generate and fetch data
       run: |
-        echo TBD
-        # Add your testing commands here
-        # For example:
-        # docker compose exec -T service_name pytest
+        make libgen-seedtools-generate-config
+        make libgen-seedtools-fetch
+
+    - name: Verify service operation
+      run: |
+        make transmission-count
 
     - name: Check logs on failure
       if: ${{ failure() }}
-      run: docker compose logs
+      run: make system-logs
 
     - name: Tear down
       if: ${{ always() }}
-      run: docker compose down -v
+      run: make system-down
