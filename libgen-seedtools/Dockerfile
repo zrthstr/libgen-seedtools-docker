@@ -4,6 +4,6 @@ RUN pip install --no-cache-dir lgst
 
 WORKDIR /data
 
-#RUN libgen-seedtools generate-config
+RUN libgen-seedtools generate-config
 
 ENTRYPOINT ["libgen-seedtools"]

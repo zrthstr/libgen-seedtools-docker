@@ -27,7 +27,7 @@ jobs:
 
     - name: Generate and fetch data
       run: |
-        make libgen-seedtools-generate-config
+        #make libgen-seedtools-generate-config
         make libgen-seedtools-fetch
 
     - name: Verify service operation
