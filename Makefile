@@ -28,7 +28,7 @@ system-build:
 
 libgen-seedtools-generate-config:
 	$(DC_RUN_NO_DEPS) libgen-seedtools generate-config
-	@echo "Run 'sh patch_config.sh' to patch data/config.json to standard config for docker compose setup"
+	@echo "Run 'sh helper/patch_config.sh' to patch data/config.json to standard config for docker compose setup"
 
 libgen-seedtools-fetch:
 	$(DC_RUN_NO_DEPS) libgen-seedtools fetch
