@@ -67,7 +67,7 @@ For more control over the setup and configuration:
    make libgen-seedtools-generate-config
    ```
 
-2. Patch the configuration for Docker environment:
+2. Patch the configuration for libgen-seedtools (if needed):
    ```bash
    sh patch_config.sh
    ```
