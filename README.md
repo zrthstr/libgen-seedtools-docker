@@ -1,10 +1,11 @@
 # Libgen Seedtools Docker
 
-A Docker Compose setup for managing and seeding Library Genesis content using libgen-seedtools and Transmission.
+A Docker Compose setup for managing and seeding Library Genesis content. Simple to deploy and operate.
 
 ## Overview
 
-This project provides a containerized environment for running [libgen-seedtools](https://github.com/zrthstr/libgen-seedtools) with [Transmission](https://transmissionbt.com/) for torrent management. It simplifies the process of fetching, managing, and seeding Library Genesis content.
+This project provides a containerized environment for running [libgen-seedtools](https://github.com/zrthstr/libgen-seedtools) with [Transmission](https://transmissionbt.com/). It identifies and fetches torrents most in need of additional seeders. This helps maintain availability of educational and scientific resources in the Library Genesis ecosystem.
+
 
 ## Requirements
 
@@ -46,6 +47,7 @@ This project provides a containerized environment for running [libgen-seedtools]
    make transmission-count
    ```
 
+
 ## Configuration
 
 ### Libgen Seedtools
@@ -57,6 +59,17 @@ This project provides a containerized environment for running [libgen-seedtools]
 - **Important**: Transmission will overwrite config changes on exit. Either:
   - Stop the service before editing the config, or
   - After editing while running, apply changes with: `make transmission-reread-config`
+
+
+
+## Directory Structure
+
+- `./data` - Configuration and data files
+- `./downloads` - Downloaded torrent files
+- `./libgen-seedtools` - libgen-seedtools container files
+- `./transmission` - Transmission container files
+
+
 
 ## Advanced Usage
 
@@ -93,6 +106,7 @@ For more control over the setup and configuration:
    make transmission-reread-config
    ```
 
+
 ## Running Without Make
 
 If you prefer to use Docker Compose directly without Make, you can run the commands directly:
@@ -121,12 +135,6 @@ docker compose exec transmission /bin/sh
 docker compose down
 ```
 
-## Directory Structure
-
-- `./data` - Configuration and data files
-- `./downloads` - Downloaded torrent files
-- `./libgen-seedtools` - libgen-seedtools container files
-- `./transmission` - Transmission container files
 
 ## Available Commands
 
