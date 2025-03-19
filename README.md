@@ -69,7 +69,7 @@ For more control over the setup and configuration:
 
 2. Patch the configuration for libgen-seedtools (if needed):
    ```bash
-   sh patch_config.sh
+   sh helper/patch_config.sh
    ```
 
 3. Start services in foreground to see logs in real-time:
@@ -92,6 +92,34 @@ For more control over the setup and configuration:
    # Force Transmission to reload configuration
    make transmission-reread-config
    ```
+
+## Running Without Make
+
+If you prefer to use Docker Compose directly without Make, you can run the commands directly:
+
+```bash
+# Show all available commands
+sh helper/gen_help.sh
+
+# Build containers
+docker compose build --no-cache
+
+# Start services in background
+docker compose up -d
+
+# Fetch content
+docker compose run --no-deps --rm --remove-orphans libgen-seedtools fetch
+
+# Check torrents
+docker compose exec transmission transmission-remote --list
+
+# Access container shells
+docker compose exec libgen-seedtools /bin/sh
+docker compose exec transmission /bin/sh
+
+# Stop services
+docker compose down
+```
 
 ## Directory Structure
 
