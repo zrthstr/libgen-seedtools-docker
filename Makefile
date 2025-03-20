@@ -5,7 +5,7 @@ DC_RUN_NO_DEPS = $(DC) run --no-deps --rm --remove-orphans
 
 .PHONY: test libgen-seedtools-test transmission-test libgen-seedtools-shell transmission-shell \
         system-up system-up-foreground system-down system-logs system-build \
-        libgen-seedtools-generate-config libgen-seedtools-fetch transmission-reread-config \
+        libgen-seedtools-generate-config libgen-seedtools-fetch transmission-reload-config \
         transmission-count
 
 ################################
@@ -33,7 +33,7 @@ libgen-seedtools-generate-config:
 libgen-seedtools-fetch:
 	$(DC_RUN_NO_DEPS) libgen-seedtools fetch
 
-transmission-reread-config:
+transmission-reload-config:
 	$(DC_EXEC) transmission kill -HUP 1
 
 ###############################

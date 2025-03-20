@@ -58,7 +58,7 @@ This project provides a containerized environment for running [libgen-seedtools]
 - Config file: `data/transmission/settings.json`
 - **Important**: Transmission will overwrite config changes on exit. Either:
   - Stop the service before editing the config, or
-  - After editing while running, apply changes with: `make transmission-reread-config`
+  - After editing while running, apply changes with: `make transmission-reload-config`
 
 
 
@@ -66,8 +66,8 @@ This project provides a containerized environment for running [libgen-seedtools]
 
 - `./data` - Configuration and data files
 - `./downloads` - Downloaded torrent files
-- `./libgen-seedtools` - libgen-seedtools container files
-- `./transmission` - Transmission container files
+- `./libgen-seedtools` - libgen-seedtools Dockerfile/container files
+- `./transmission` - Transmission Dockerfile/container files
 
 
 
@@ -80,7 +80,8 @@ For more control over the setup and configuration:
    make libgen-seedtools-generate-config
    ```
 
-2. Patch the configuration for libgen-seedtools (if needed):
+2. Edit the configuration for libgen-seedtools (if needed):
+   You might need to tell it where to find the Transmission RPC network endpoint.
    ```bash
    sh helper/patch_config.sh
    ```
@@ -103,7 +104,7 @@ For more control over the setup and configuration:
    make test
    
    # Force Transmission to reload configuration
-   make transmission-reread-config
+   make transmission-reload-config
    ```
 
 
@@ -156,7 +157,7 @@ docker compose down
 
 - `make transmission-test` - Test Transmission installation
 - `make transmission-count` - List current torrents
-- `make transmission-reread-config` - Force Transmission to reread its configuration
+- `make transmission-reload-config` - Force Transmission to reload its configuration
 - `make transmission-shell` - Open a shell in the Transmission container
 
 ### Testing Commands
@@ -201,7 +202,7 @@ If you encounter issues:
    - Stop Transmission before editing the config file, or 
    - After editing while running, use the HUP signal to reload:
    ```bash
-   make transmission-reread-config
+   make transmission-reload-config
    ```
    Note: Transmission will rewrite its config file to the original state upon exit if you don't properly reload it.
 
