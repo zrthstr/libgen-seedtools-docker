@@ -69,7 +69,8 @@ This project provides a containerized environment for running [libgen-seedtools]
 - `./libgen-seedtools` - libgen-seedtools Dockerfile/container files
 - `./transmission` - Transmission Dockerfile/container files
 
-
+## VPN and Network Considerations
+*work in progress*
 
 ## Advanced Usage
 
