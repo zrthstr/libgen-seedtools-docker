@@ -1,5 +1,9 @@
-DC = docker compose
-DC := $(shell which docker-compose || which docker compose)
+DOCKER_COMPOSE := $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || command -v docker-compose)
+
+ifeq ($(DOCKER_COMPOSE),)
+    $(error Docker Compose not found. Please install Docker Compose or ensure the Docker plugin is properly configured.)
+endif
+
 
 DC_EXEC = $(DC) exec
 DC_RUN_NO_DEPS = $(DC) run --no-deps --rm --remove-orphans
