@@ -1,5 +1,6 @@
 DC = docker compose
-#DC = COMPOSE_DOCKER_CLI_BUILD=1 docker compose
+DC := $(shell which docker-compose || which docker compose)
+
 DC_EXEC = $(DC) exec
 DC_RUN_NO_DEPS = $(DC) run --no-deps --rm --remove-orphans
 
