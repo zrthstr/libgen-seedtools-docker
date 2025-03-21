@@ -6,4 +6,4 @@ WORKDIR /data
 
 RUN libgen-seedtools generate-config
 
-ENTRYPOINT ["libgen-seedtools", "fetch"]
+ENTRYPOINT ["libgen-seedtools"]
