@@ -1,6 +1,6 @@
-DOCKER_COMPOSE := $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || command -v docker-compose)
+DC := $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || command -v docker-compose)
 
-ifeq ($(DOCKER_COMPOSE),)
+ifeq ($(DC),)
     $(error Docker Compose not found. Please install Docker Compose or ensure the Docker plugin is properly configured.)
 endif
 
