@@ -12,7 +12,7 @@ env:
   OWNER: ${{ github.repository_owner }}
 
 jobs:
-  build-libgen-seedtools-transmission-aio:
+  lgst-aio:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,22 +32,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata for lgst-cli
+      - name: Extract metadata for lgst-aio
         id: meta-libgen
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/lgst-cli
+          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/libgen-seedtools-allinone
           tags: |
             type=sha,format=long
             type=ref,event=branch
             type=ref,event=tag
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and push lgst-cli image
+      - name: Build and push lgst-aio image
         uses: docker/build-push-action@v5
         with:
           context: ./libgen-seedtools
-          file: ./libgen-seedtools/Dockerfile
+          file: ./libgen-seedtools-allinone/Dockerfile
           push: true
           tags: ${{ steps.meta-libgen.outputs.tags }}
           labels: ${{ steps.meta-libgen.outputs.labels }}
