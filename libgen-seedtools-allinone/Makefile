@@ -1,17 +1,11 @@
-
-
-#run:
-#	docker build -t lgst-aio .
-#	docker run -d --name lgstr-aio lgst-aio
-
-
-#fetch:
-#	docker exec lgstr-aio libgen-seedtools fetch
-
+NAME = libgen-seedtools-allinone
 
 run:
-	docker run -d --name lgst-allinone ghcr.io/zrthstr/libgen-seedtools-allinone
+	docker run -d --name $(NAME) ghcr.io/zrthstr/$(NAME)
 
 fetch:
-	docker exec lgst-allinone libgen-seedtools fetch
+	docker exec $(NAME) libgen-seedtools fetch
+
+edit:
+	docker exec -it $(NAME) /bin/sh
 
