@@ -10,7 +10,7 @@
 
 
 run:
-	docker run -d --name lgst-allinone lgst-allinone
+	docker run -d --name lgst-allinone ghcr.io/zrthstr/libgen-seedtools-allinone
 
 fetch:
 	docker exec lgst-allinone libgen-seedtools fetch
